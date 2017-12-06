@@ -816,128 +816,328 @@
 // -------------------------------------------
 // STEP 5
 // -------------------------------------------
+// import React, { Component } from 'react';
+// import { Image, Platform, StyleSheet, Text, View} from 'react-native';
+//
+// export default class App extends Component<{}> {
+//     render() {
+//         return (
+//             <View style={styles.container}>
+//                 <View style={styles.cardContainer}>
+//                     <View style={styles.cardImageContainer}>
+//                         <Image style={styles.cardImage} source={require('./user.png')}/>
+//                     </View>
+//                     <View>
+//                         <Text style={styles.cardTitle}>
+//                             John Doe
+//                         </Text>
+//                     </View>
+//                     <View style={styles.cardSubtitleContainer}>
+//                         <Text style={styles.cardSubtitle}>
+//                             React Native Developer
+//                         </Text>
+//                     </View>
+//                     <View>
+//                         <Text style={styles.cardDescription}>
+//                             John is a really great JavaScript developer. He
+//                             loves using JS to build React Native applications
+//                             for iOS and Android.
+//                         </Text>
+//                     </View>
+//                 </View>
+//             </View>
+//         );
+//     }
+// }
+//
+// const profileCardColor = 'dodgerblue';
+//
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center'
+//     },
+//     cardContainer: {
+//         alignItems: 'center',
+//         borderColor: 'black',
+//         borderWidth: 3,
+//         borderStyle: 'solid',
+//         borderRadius: 20,
+//         backgroundColor: profileCardColor,
+//         width: 300,
+//         height: 400,
+//         ...Platform.select({
+//             ios: {
+//                 shadowColor: 'black',
+//                 shadowOffset: {
+//                     height: 10
+//                 },
+//                 shadowOpacity: 1
+//             },
+//             android: {
+//                 elevation: 15
+//             }
+//         })
+//     },
+//     cardImageContainer: {
+//         alignItems: 'center',
+//         backgroundColor: 'white',
+//         borderWidth: 3,
+//         borderColor: 'black',
+//         width: 120,
+//         height: 120,
+//         borderRadius: 60,
+//         marginTop: 30,
+//         paddingTop: 15,
+//         ...Platform.select({
+//             ios: {
+//                 shadowColor: 'black',
+//                 shadowOffset: {
+//                     height: 10,
+//                 },
+//                 shadowOpacity: 1
+//             },
+//             android: {
+//                 borderWidth: 3,
+//                 borderColor: 'black',
+//                 elevation: 15
+//             }
+//         })
+//     },
+//     cardImage: {
+//         width: 80,
+//         height: 80
+//     },
+//     cardTitle: {
+//         color: 'white',
+//         fontWeight: 'bold',
+//         fontSize: 24,
+//         marginTop: 30,
+//         textShadowColor: 'black',
+//         textShadowOffset: {
+//             height: 2,
+//             width: 2
+//         },
+//         textShadowRadius: 3
+//     },
+//     cardSubtitleContainer: {
+//         borderColor: 'black',
+//         borderWidth: 3,
+//         borderTopWidth: 0,
+//         borderRightWidth: 0,
+//         borderLeftWidth: 0,
+//     },
+//     cardSubtitle: {
+//         fontWeight: 'bold',
+//         marginTop: 10,
+//         marginBottom: 10,
+//     },
+//     cardDescription: {
+//         fontStyle: 'italic',
+//         marginTop: 10,
+//         marginRight: 40,
+//         marginLeft: 40,
+//         marginBottom: 10
+//     }
+// });
+
+// ----------------------------------------------------
+// Translate Example
+// ----------------------------------------------------
+// import React, { Component } from 'react';
+// import { Dimensions, StyleSheet, Text, View} from 'react-native';
+//
+// export default class App extends Component<{}> {
+//     render() {
+//         return (
+//             <View style={styles.container}>
+//                 <Point/>
+//                 <Square>
+//                     <Text>center</Text>
+//                 </Square>
+//                 <Square style={{transform: [{translateY: -1.5 * squareSize}]}}>
+//                     <SquareText>&uarr; top</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX:  1.5 * squareSize},
+//                                             {translateY: -1.5 * squareSize}]
+//                 }}>
+//                     <SquareText>upper right &#8599;</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX: 1.5 * squareSize}]}}>
+//                     <SquareText>right &rarr;</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX:  1.5 * squareSize},
+//                                             {translateY:  1.5 * squareSize}]
+//                 }}>
+//                     <SquareText>bottom right &#8600;</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateY: 1.5 * squareSize}]}}>
+//                     <SquareText>bottom &darr;</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX: -1.5 * squareSize},
+//                                             {translateY:  1.5 * squareSize}]
+//                 }}>
+//                     <SquareText>&#8601; bottom left</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX: -1.5 * squareSize}]}}>
+//                     <SquareText>&larr; left</SquareText>
+//                 </Square>
+//                 <Square style={{transform: [{translateX: -1.5 * squareSize},
+//                                             {translateY: -1.5 * squareSize}]
+//                 }}>
+//                     <SquareText>&#8598; upper left</SquareText>
+//                 </Square>
+//             </View>
+//         );
+//     }
+// }
+//
+// const Point = (props) => (
+//     <View style={[styles.point, props.style]}>
+//         {props.children}
+//     </View>
+// );
+//
+// const Square = (props) => (
+//     <View style={[styles.square, props.style]}>
+//         {props.children}
+//     </View>
+// );
+//
+// const SquareText = (props) => (
+//     <Text style={[{textAlign: 'center'}, props.style]}>
+//         {props.children}
+//     </Text>
+// );
+//
+// const centerY = (Dimensions.get('window').height / 2);
+// const centerX = (Dimensions.get('window').width / 2);
+// const squareSize = 80;
+// const pointSize = 10;
+//
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//     },
+//     point: {
+//         width: pointSize,
+//         height: pointSize,
+//         position: 'absolute',
+//         top: centerY - (pointSize / 2),
+//         left: centerX - (pointSize / 2),
+//         borderWidth: 1,
+//         borderRadius: pointSize / 2,
+//         backgroundColor: 'black'
+//     },
+//     square: {
+//         width: squareSize,
+//         height: squareSize,
+//         alignItems: 'center',
+//         position: 'absolute',
+//         top: centerY - (squareSize / 2),
+//         left: centerX - (squareSize / 2),
+//         borderWidth: 2,
+//         backgroundColor: 'transparent'
+//     }
+// });
+
+// ----------------------------------------------------
+// Rotate Example
+// ----------------------------------------------------
 import React, { Component } from 'react';
-import { Image, Platform, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, StyleSheet, Text, View} from 'react-native';
 
 export default class App extends Component<{}> {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.cardContainer}>
-                    <View style={styles.cardImageContainer}>
-                        <Image style={styles.cardImage} source={require('./user.png')}/>
-                    </View>
-                    <View>
-                        <Text style={styles.cardTitle}>
-                            John Doe
-                        </Text>
-                    </View>
-                    <View style={styles.cardSubtitleContainer}>
-                        <Text style={styles.cardSubtitle}>
-                            React Native Developer
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={styles.cardDescription}>
-                            John is a really great JavaScript developer. He
-                            loves using JS to build React Native applications
-                            for iOS and Android.
-                        </Text>
-                    </View>
-                </View>
+                <Point/>
+                <Square>
+                    <Text>center</Text>
+                </Square>
+                <Square style={{transform: [{translateY: -1.5 * squareSize}]}}>
+                    <SquareText>&uarr; top</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX:  1.5 * squareSize},
+                                            {translateY: -1.5 * squareSize}]
+                }}>
+                    <SquareText>upper right &#8599;</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX: 1.5 * squareSize}]}}>
+                    <SquareText>right &rarr;</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX:  1.5 * squareSize},
+                                            {translateY:  1.5 * squareSize}]
+                }}>
+                    <SquareText>bottom right &#8600;</SquareText>
+                </Square>
+                <Square style={{transform: [{translateY: 1.5 * squareSize}]}}>
+                    <SquareText>bottom &darr;</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX: -1.5 * squareSize},
+                                            {translateY:  1.5 * squareSize}]
+                }}>
+                    <SquareText>&#8601; bottom left</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX: -1.5 * squareSize}]}}>
+                    <SquareText>&larr; left</SquareText>
+                </Square>
+                <Square style={{transform: [{translateX: -1.5 * squareSize},
+                                            {translateY: -1.5 * squareSize}]
+                }}>
+                    <SquareText>&#8598; upper left</SquareText>
+                </Square>
             </View>
         );
     }
 }
 
-const profileCardColor = 'dodgerblue';
+const Point = (props) => (
+    <View style={[styles.point, props.style]}>
+        {props.children}
+    </View>
+);
+
+const Square = (props) => (
+    <View style={[styles.square, props.style]}>
+        {props.children}
+    </View>
+);
+
+const SquareText = (props) => (
+    <Text style={[{textAlign: 'center'}, props.style]}>
+        {props.children}
+    </Text>
+);
+
+const centerY = (Dimensions.get('window').height / 2);
+const centerX = (Dimensions.get('window').width / 2);
+const squareSize = 80;
+const pointSize = 10;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
-    cardContainer: {
+    point: {
+        width: pointSize,
+        height: pointSize,
+        position: 'absolute',
+        top: centerY - (pointSize / 2),
+        left: centerX - (pointSize / 2),
+        borderWidth: 1,
+        borderRadius: pointSize / 2,
+        backgroundColor: 'black'
+    },
+    square: {
+        width: squareSize,
+        height: squareSize,
         alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 3,
-        borderStyle: 'solid',
-        borderRadius: 20,
-        backgroundColor: profileCardColor,
-        width: 300,
-        height: 400,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: {
-                    height: 10
-                },
-                shadowOpacity: 1
-            },
-            android: {
-                elevation: 15
-            }
-        })
-    },
-    cardImageContainer: {
-        alignItems: 'center',
-        backgroundColor: 'white',
-        borderWidth: 3,
-        borderColor: 'black',
-        width: 120,
-        height: 120,
-        borderRadius: 60,
-        marginTop: 30,
-        paddingTop: 15,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: {
-                    height: 10,
-                },
-                shadowOpacity: 1
-            },
-            android: {
-                borderWidth: 3,
-                borderColor: 'black',
-                elevation: 15
-            }
-        })
-    },
-    cardImage: {
-        width: 80,
-        height: 80
-    },
-    cardTitle: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 24,
-        marginTop: 30,
-        textShadowColor: 'black',
-        textShadowOffset: {
-            height: 2,
-            width: 2
-        },
-        textShadowRadius: 3
-    },
-    cardSubtitleContainer: {
-        borderColor: 'black',
-        borderWidth: 3,
-        borderTopWidth: 0,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-    },
-    cardSubtitle: {
-        fontWeight: 'bold',
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    cardDescription: {
-        fontStyle: 'italic',
-        marginTop: 10,
-        marginRight: 40,
-        marginLeft: 40,
-        marginBottom: 10
+        position: 'absolute',
+        top: centerY - (squareSize / 2),
+        left: centerX - (squareSize / 2),
+        borderWidth: 2,
+        backgroundColor: 'transparent'
     }
 });
